@@ -1,0 +1,935 @@
+html {
+    scroll-behavior: smooth;
+}
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f3e744;
+}
+
+
+/* CABECERA */
+
+header {
+    background-image:
+
+        linear-gradient(
+            30deg,
+            rgb(223, 4, 40) 0%,
+            rgba(233, 149, 53, 0.72) 45%,
+            rgba(251, 255, 1, 0.897) 100%
+        ),
+
+        url("imagenes/chapin.jpeg");
+
+            
+    padding: 20px 50px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    overflow: hidden;
+}
+header::before {
+    content: "";
+
+    position: absolute;
+
+    width: 115%;
+    height: 300%;
+
+    left: -7%;
+    top: -100%;
+
+    background-image: url("imagenes/chapin.jpeg");
+    background-size: 100% auto;
+    background-position: center 98%;
+
+    opacity: 0.25;
+
+    transform: rotate(4deg);
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+header::after {
+    content: "";
+
+    position: absolute;
+
+    width: 120%;
+    height: 100%;
+
+    left: -10%;
+    top: 0;
+
+    background:
+        repeating-radial-gradient(
+            ellipse at center,
+            transparent 0px,
+            transparent 12px,
+            rgba(255, 255, 255, 0.06) 13px,
+            transparent 15px
+        );
+
+    opacity: 0.5;
+
+    animation: agua-header 12s ease-in-out infinite alternate;
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+@keyframes agua-header {
+
+    0% {
+        transform:
+            translateX(-10px)
+            translateY(0px)
+            scale(1);
+    }
+
+    50% {
+        transform:
+            translateX(8px)
+            translateY(2px)
+            scale(1.03);
+    }
+
+    100% {
+        transform:
+            translateX(-4px)
+            translateY(-2px)
+            scale(1.01);
+    }
+}
+
+/* AVES EN LA CABECERA */
+
+.aves-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    pointer-events: none;
+    z-index: 1;
+}
+
+.ave-header {
+    position: absolute;
+    right: -100px;
+
+    width: 80px;
+    height: auto;
+
+    animation: vuelo-header 25s linear infinite;
+}
+
+.ave-header1 {
+    top: 2px;
+    width: 200px;
+
+    animation-name: vuelo-derecha-izquierda;
+    animation-duration: 60s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-delay: -3s;
+}
+
+.ave-header2 {
+    top: 1px;
+    width: 200px;
+    animation-delay: -2s;
+    animation-duration: 80s;
+}
+
+.ave-header3 {
+    top: 1px;
+    width: 100px;
+    animation-delay: -2s;
+    animation-duration: 45s;
+    
+}
+.ave-header4 {
+    top: 20px;
+    width: 35px;
+
+    animation-name: vuelo-mosquito;
+    animation-duration: 30s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+}
+@keyframes vuelo-mosquito {
+
+    0% {
+        right: -100px;
+        top: 25px;
+        transform: scale(0.5) rotate(0deg);
+    }
+
+    15% {
+        right: 20%;
+        top: 5px;
+        transform: scale(0.2) rotate(-8deg);
+    }
+
+    30% {
+        right: 35%;
+        top: 35px;
+        transform: scale(1.1) rotate(6deg);
+    }
+
+    45% {
+        right: 48%;
+        top: 15px;
+        transform: scale(1.4) rotate(-4deg);
+    }
+
+    55% {
+        right: 48%;
+        top: 15px;
+        transform: scale(2.5) rotate(0deg);
+    }
+
+    65% {
+        right: 60%;
+        top: 40px;
+        transform: scale(1.2) rotate(7deg);
+    }
+
+    80% {
+        right: 78%;
+        top: 10px;
+        transform: scale(0.9) rotate(-6deg);
+    }
+
+    100% {
+        right: 110%;
+        top: 25px;
+        transform: scale(0.2) rotate(0deg);
+    }
+}
+@keyframes vuelo-header {
+
+    from {
+        right: 110%;
+    }
+
+    to {
+        right: -100px;
+    }
+}
+.logo,
+nav {
+    position: relative;
+    z-index: 20;
+
+    display: flex;
+    gap: 35px;
+}
+
+/* LOGO */
+
+.logo {
+    color: rgb(255, 238, 0);
+    font-size: 32px;
+    font-weight: bold;
+}
+
+
+/* MENÚ */
+
+nav {
+    position: relative;
+    z-index: 20;
+
+    display: flex;
+    gap: 35px;
+}
+nav a {
+    color: #004797;
+    text-decoration: none;
+
+    font-size: 20px;
+    font-weight: bold;
+
+    transition:
+        color 0.3s ease,
+        transform 0.3s ease;
+}
+
+nav a:hover {
+    color: #c51515;
+    transform: scale(1.08);
+}
+/* CONTENIDO PRINCIPAL */
+
+/* PORTADA */
+
+main {
+    padding: 0;
+}
+
+.portada {
+    min-height: 600px;
+
+    background-image:
+        linear-gradient(
+            rgba(0, 0, 0, 0.45),
+            rgba(0, 0, 0, 0.45)
+        ),
+        url("imagenes/portada4.png");
+
+    background-size: cover;
+    background-position: center;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 50px;
+
+    position: relative;
+    overflow: hidden;
+}
+.ave {
+    position: absolute;
+    top: 20%;
+    right: -100px;
+
+    font-size: 40px;
+    color: rgba(255,255,255,0.8);
+
+    animation: volar 18s linear infinite;
+
+    z-index: 1;
+}
+
+.ave2 {
+    top: 30%;
+    animation-delay: 7s;
+    font-size: 28px;
+}
+
+@keyframes volar {
+
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-120vw);
+    }
+}
+
+/* TEXTO DE PORTADA */
+
+.contenido-portada {
+    max-width: 700px;
+}
+
+.portada h1 {
+    font-size: 55px;
+    color: rgb(255, 238, 0);
+    margin-bottom: 20px;
+}
+
+.portada p {
+    font-size: 20px;
+    line-height: 1.6;
+    color: rgb(255, 255, 255);
+}
+@keyframes vuelo-derecha-izquierda {
+
+    from {
+        right: -120px;
+    }
+
+    to {
+        right: 110%;
+    }
+}
+
+/* BOTÓN */
+
+.boton {
+    display: inline-block;
+
+    margin-top: 30px;
+    padding: 20px 70px;
+
+    background-color: #f5d000;
+    color: #1d57f7;
+
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 15px;
+
+    border-radius: 15px;
+
+    transition:
+        transform 0.3s ease,
+        background-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.boton:hover {
+    transform: scale(1.05);
+
+    background-color: #ffe033;
+
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.25);
+}
+/* INTRODUCCIÓN A LOS RECORRIDOS */
+
+.introduccion {
+    position: relative;
+    overflow: hidden;
+
+    background-color: rgb(91, 124, 28);
+
+    padding: 90px 50px;
+}
+.introduccion::before {
+    content: "";
+
+    position: absolute;
+
+    width: 120%;
+    height: 140%;
+
+    left: -10%;
+    top: -20%;
+
+    background-image: url("imagenes/chapin.jpeg");
+    background-size: cover;
+    background-position: center;
+
+    opacity: 0.65;
+
+    transform: rotate(-2deg);
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            transparent 0%,
+            black 20%,
+            black 80%,
+            transparent 100%
+        );
+
+    -webkit-mask-image:
+        linear-gradient(
+            to bottom,
+            transparent 0%,
+            black 20%,
+            black 80%,
+            transparent 100%
+        );
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+.introduccion .contenedor {
+    position: relative;
+    z-index: 2;
+}
+.contenedor {
+    max-width: 1000px;
+    margin: auto;
+}
+
+.introduccion h2 {
+    font-size: 42px;
+    color: #ffffff;
+    margin-bottom: 30px;
+}
+
+.introduccion p {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #f8f8f8;
+}
+
+.texto-grande {
+    font-size: 26px !important;
+    font-weight: bold;
+    color: #ffffff !important;
+}
+
+.nosotros {
+    background-color: #dce8e5;
+    padding: 90px 50px;
+    min-height: 500px;
+}
+
+.contacto {
+    background-color: #013647;
+    padding: 90px 50px;
+    min-height: 400px;
+    color: white;
+}
+.galeria h2,
+.nosotros h2 {
+    font-size: 42px;
+    color: #013647;
+}
+
+.contacto h2 {
+    font-size: 42px;
+    color: white;
+}
+
+.contacto p {
+    color: white;
+}
+/* TARJETAS DE RECORRIDOS */
+
+/* CONTENEDOR DE LAS TARJETAS */
+
+.tarjetas-recorridos {
+    
+    display: grid;
+    
+    grid-template-columns: 1fr 1fr;
+
+    gap: 30px;
+
+    margin-top: 60px;
+
+    width: 100%;
+}
+
+/* TARJETA */
+
+.tarjeta {
+    position: relative;
+    overflow: hidden;
+
+    box-sizing: border-box;
+
+    padding: 30px;
+
+    background: rgba(0, 0, 0, 0.14);
+
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 12px;
+
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+
+/* ONDAS DE AGUA */
+
+.tarjeta::before,
+.tarjeta::after {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    top: 89%;
+
+    width: 30px;
+    height: 3px;
+
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 80%;
+
+    box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.03),
+        0 0 0 16px rgba(255, 255, 255, 0.008);
+
+    transform:
+        translate(-50%, -50%)
+        scale(0);
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    z-index: 1;
+}
+
+
+.tarjeta:hover::after {
+    animation:
+        onda-agua 5.5s ease-out;
+}
+
+
+.tarjeta:hover::before {
+    animation:
+        onda-agua 5.5s ease-out 1.5s;
+}
+
+
+@keyframes onda-agua {
+
+    0% {
+        transform:
+            translate(-50%, -50%)
+            scale(0);
+
+        opacity: 0.8;
+    }
+
+    100% {
+        transform:
+            translate(-50%, -50%)
+            scale(18);
+
+        opacity: 0;
+    }
+}
+
+
+/* FOTO */
+
+.foto-tarjeta {
+    position: relative;
+    overflow: hidden;
+}
+
+
+.tarjeta img {
+    width: 100%;
+    height: 220px;
+
+    object-fit: cover;
+
+    transition:
+        transform 0.6s ease;
+}
+
+
+.tarjeta:hover img {
+    transform:
+        scale(1.08);
+}
+
+
+/* TÍTULO */
+
+.tarjeta h3 {
+    padding: 0 30px;
+
+    margin-top: 25px;
+
+    font-size: 25px;
+
+    color: #ffffff;
+}
+
+
+/* TEXTO */
+
+.tarjeta p {
+    padding:
+        0 30px 30px 30px;
+
+    font-size: 17px;
+    line-height: 1.7;
+
+    color:
+        rgba(255, 255, 255, 0.85);
+}
+
+
+/* EFECTO AL PASAR EL MOUSE */
+
+.tarjeta:hover {
+    transform:
+        translateY(-8px);
+
+    box-shadow:
+        0 15px 35px
+        rgba(0, 0, 0, 0.25);
+}
+/* GALERÍA */
+
+.galeria {
+    position: relative;
+    overflow: hidden;
+
+    background-color: #23002c;
+
+    padding: 90px 50px;
+    min-height: 500px;
+}
+
+.galeria h2 {
+    font-size: 42px;
+    color: #dadada;
+    margin-bottom: 20px;
+}
+
+.intro-galeria {
+    font-size: 18px;
+    color: #fd00fd;
+    margin-bottom: 40px;
+}
+
+
+/* MOSAICO */
+
+.mosaico {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    grid-auto-rows: 220px;
+
+    gap: 12px;
+}
+
+
+.foto {
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+
+.foto img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: transform 0.6s ease;
+}
+
+
+.foto:hover img {
+    transform: scale(1.08);
+}
+
+
+/* FOTOGRAFÍAS ESPECIALES */
+
+.foto-grande {
+    grid-row: span 2;
+}
+
+.foto-ancha {
+    grid-column: span 2;
+}
+/* LIRIOS FLOTANDO */
+
+.lirios-fondo {
+    position: absolute;
+    inset: 0;
+
+    pointer-events: none;
+    z-index: 0;
+}
+
+.lirio {
+    position: absolute;
+
+    height: auto;
+
+    opacity: 0.18;
+
+    animation: flotar-suave 7s ease-in-out infinite alternate;
+}
+
+
+/* LIRIO 1 */
+
+.lirio1 {
+    width: 500px;
+
+    top: 8%;
+    left: 4%;
+
+    animation-duration: 10s;
+}
+
+
+/* LIRIO 2 */
+
+.lirio2 {
+    width: 600px;
+
+    top: 45%;
+    right: 3%;
+
+    animation-duration: 20s;
+    animation-delay: -3s;
+}
+
+
+/* LIRIO 3 */
+
+.lirio3 {
+    width: 150px;
+
+    bottom: 25%;
+    left: 15%;
+
+    animation-duration: 25s;
+    animation-delay: -6s;
+}
+@keyframes flotar-suave {
+
+    0% {
+        transform:
+            translateY(0px)
+            translateX(0px)
+            rotate(-2deg);
+    }
+
+    50% {
+        transform:
+            translateY(-8px)
+            translateX(5px)
+            rotate(2deg);
+    }
+
+    100% {
+        transform:
+            translateY(4px)
+            translateX(-4px)
+            rotate(-1deg);
+    }
+}
+.galeria .contenedor {
+    position: relative;
+    z-index: 2;
+}
+/* LIGHTBOX DE GALERÍA */
+
+.lightbox {
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.92);
+
+    z-index: 3000;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition:
+        opacity 0.5s ease,
+        visibility 0.5s ease;
+}
+
+.lightbox.activo {
+    opacity: 1;
+    visibility: visible;
+}
+
+.lightbox-img {
+    max-width: 90%;
+    max-height: 85vh;
+
+    border-radius: 8px;
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.5);
+
+    opacity: 0;
+
+    transform: scale(0.25);
+
+    transition:
+        transform 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.5s ease;
+}
+
+.lightbox-img.giro-izquierda {
+    transform:
+        scale(0.1)
+        rotate(70deg);
+}
+
+.lightbox-img.giro-derecha {
+    transform:
+        scale(0.2)
+        rotate(120deg);
+}
+
+
+.lightbox.activo .lightbox-img {
+    opacity: 1;
+
+    transform:
+        scale(1)
+        rotate(0deg);
+}
+
+.cerrar {
+    position: absolute;
+
+    top: 25px;
+    right: 40px;
+
+    color: white;
+    font-size: 50px;
+
+    cursor: pointer;
+}
+.flecha {
+    position: absolute;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    background: rgba(0, 0, 0, 0.35);
+    color: white;
+
+    border: none;
+    border-radius: 50%;
+
+    width: 55px;
+    height: 55px;
+
+    font-size: 32px;
+
+    cursor: pointer;
+
+    z-index: 3100;
+
+    transition:
+        background 0.3s ease,
+        transform 0.3s ease;
+}
+
+.flecha:hover {
+    background: rgba(255, 255, 255, 0.20);
+
+    transform:
+        translateY(-50%)
+        scale(1.12);
+}
+
+.flecha-izquierda {
+    left: 30px;
+}
+
+.flecha-derecha {
+    right: 30px;
+}
