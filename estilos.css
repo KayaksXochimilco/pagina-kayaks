@@ -19,10 +19,9 @@ header {
             rgba(233, 149, 53, 0.72) 45%,
             rgba(251, 255, 1, 0.897) 100%
         ),
-
+        
         url("imagenes/chapin.jpeg");
-
-            
+       
     padding: 20px 50px;
 
     display: flex;
@@ -229,48 +228,68 @@ header::after {
         right: -100px;
     }
 }
+/* LOGO Y MENÚ SOBRE EL FONDO */
+
 .logo,
 nav {
     position: relative;
     z-index: 20;
-
-    display: flex;
-    gap: 35px;
 }
+
 
 /* LOGO */
 
 .logo {
     color: rgb(255, 238, 0);
-    font-size: 32px;
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: 34px;
     font-weight: bold;
+    font-style: italic;
+
+    letter-spacing: 1px;
+
+    text-shadow:
+        2px 2px 4px rgba(0, 0, 0, 0.40);
 }
 
 
 /* MENÚ */
 
 nav {
-    position: relative;
-    z-index: 20;
-
     display: flex;
     gap: 35px;
 }
+
+
 nav a {
-    color: #004797;
+    color: #161616;
     text-decoration: none;
 
     font-size: 20px;
     font-weight: bold;
 
+    /* SOMBRA DEL TEXTO */
+    text-shadow:
+        1px 1px 3px rgba(255, 255, 255, 0.55),
+        0 2px 4px rgba(0, 0, 0, 0.20);
+
     transition:
         color 0.3s ease,
-        transform 0.3s ease;
+        transform 0.3s ease,
+        text-shadow 0.3s ease;
 }
 
+
 nav a:hover {
-    color: #c51515;
-    transform: scale(1.08);
+    color: #f3f56d;
+
+    transform: scale(1.3);
+
+    text-shadow:
+        0 0 5px rgba(253, 0, 0, 0.904),
+        0 16px 5px rgba(0, 0, 0, 0.822);
 }
 /* CONTENIDO PRINCIPAL */
 
@@ -301,35 +320,6 @@ main {
     position: relative;
     overflow: hidden;
 }
-.ave {
-    position: absolute;
-    top: 20%;
-    right: -100px;
-
-    font-size: 40px;
-    color: rgba(255,255,255,0.8);
-
-    animation: volar 18s linear infinite;
-
-    z-index: 1;
-}
-
-.ave2 {
-    top: 30%;
-    animation-delay: 7s;
-    font-size: 28px;
-}
-
-@keyframes volar {
-
-    0% {
-        transform: translateX(0);
-    }
-
-    100% {
-        transform: translateX(-120vw);
-    }
-}
 
 /* TEXTO DE PORTADA */
 
@@ -338,15 +328,44 @@ main {
 }
 
 .portada h1 {
-    font-size: 55px;
-    color: rgb(255, 238, 0);
-    margin-bottom: 20px;
+    font-family: "Cormorant Garamond", Georgia, serif;
+
+    font-size: 64px;
+    font-weight: 600;
+    
+    line-height: 0.95;
+    letter-spacing: 0.5px;
+
+    color: white;
+
+    margin-bottom: 25px;
+
+    text-shadow:
+        2px 3px 8px rgba(0, 0, 0, 0.55);
 }
 
 .portada p {
-    font-size: 20px;
+    font-family: "Cormorant Garamond", Georgia, serif;
+    
+    position: absolute;
+            
+    right: 50px;
+
+    width: 500px;
+
+    text-align: right;
+    
+    font-size: 25px;
     line-height: 1.6;
     color: rgb(255, 255, 255);
+    
+}
+.portada p:nth-of-type(1) {
+    top: 230px;
+}
+
+.portada p:nth-of-type(2) {
+    top: 350px;
 }
 @keyframes vuelo-derecha-izquierda {
 
@@ -367,28 +386,42 @@ main {
     margin-top: 30px;
     padding: 20px 70px;
 
-    background-color: #f5d000;
-    color: #1d57f7;
+    /* VIDRIO AMARILLO */
+    background: rgba(245, 208, 0, 0.28);
+
+    border: 1px solid rgba(245, 208, 0, 0.28);
+
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(12px);
+
+    color: #f8ad67;
 
     text-decoration: none;
     font-weight: bold;
-    font-size: 15px;
+    font-size: 20px;
 
-    border-radius: 15px;
+    border-radius: 30px;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 0.18);
 
     transition:
         transform 0.3s ease,
-        background-color 0.3s ease,
+        background 0.3s ease,
         box-shadow 0.3s ease;
 }
 
 .boton:hover {
     transform: scale(1.05);
 
-    background-color: #ffe033;
+    background: rgba(255, 224, 51, 0.45);
+
+    border-color: rgba(255, 224, 51, 0.45);
 
     box-shadow:
-        0 8px 20px rgba(0, 0, 0, 0.25);
+        0 10px 30px rgba(0, 0, 0, 0.25),
+        0 0 18px rgba(255, 220, 50, 0.20);
 }
 /* INTRODUCCIÓN A LOS RECORRIDOS */
 
@@ -480,12 +513,12 @@ main {
     min-height: 400px;
     color: white;
 }
-.galeria h2,
+/* TÍTULO NOSOTROS */
+
 .nosotros h2 {
     font-size: 42px;
     color: #013647;
 }
-
 .contacto h2 {
     font-size: 42px;
     color: white;
@@ -673,6 +706,8 @@ main {
     padding: 90px 50px;
     min-height: 500px;
 }
+
+/* TÍTULO GALERÍA */
 
 .galeria h2 {
     font-size: 42px;
@@ -932,4 +967,121 @@ main {
 
 .flecha-derecha {
     right: 30px;
+}
+/* =========================
+   DISEÑO PARA CELULARES
+========================= */
+
+@media (max-width: 768px) {
+
+    header {
+        padding: 15px 20px;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .logo {
+        font-size: 28px;
+        text-align: center;
+    }
+
+    nav {
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    nav a {
+        font-size: 16px;
+    }
+
+
+    /* PORTADA */
+
+    .portada {
+        min-height: 650px;
+        padding: 30px 20px;
+    }
+
+    .contenido-portada {
+        max-width: 100%;
+    }
+
+    .portada h1 {
+        font-size: 48px;
+    }
+
+    .portada p {
+        position: static;
+        width: auto;
+        text-align: left;
+    }
+
+    .boton {
+        padding: 16px 30px;
+        font-size: 16px;
+    }
+
+
+    /* RECORRIDOS */
+
+    .introduccion {
+        padding: 70px 20px;
+    }
+
+    .tarjetas-recorridos {
+        grid-template-columns: 1fr;
+    }
+
+    .tarjeta {
+        padding: 20px;
+    }
+
+
+    /* GALERÍA */
+
+    .galeria {
+        padding: 70px 20px;
+    }
+
+    .mosaico {
+        grid-template-columns: 1fr;
+        grid-auto-rows: 260px;
+    }
+
+    .foto-grande,
+    .foto-ancha {
+        grid-row: auto;
+        grid-column: auto;
+    }
+
+
+    /* NOSOTROS Y CONTACTO */
+
+    .nosotros,
+    .contacto {
+        padding: 70px 20px;
+    }
+
+
+    /* LIGHTBOX */
+
+    .lightbox-img {
+        max-width: 92%;
+        max-height: 75vh;
+    }
+
+    .flecha {
+        width: 45px;
+        height: 45px;
+        font-size: 26px;
+    }
+
+    .flecha-izquierda {
+        left: 10px;
+    }
+
+    .flecha-derecha {
+        right: 10px;
+    }
 }
