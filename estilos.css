@@ -128,7 +128,7 @@ header::after {
     position: absolute;
     right: -100px;
 
-    width: 80px;
+    width: 20px;
     height: auto;
 
     animation: vuelo-header 25s linear infinite;
@@ -147,7 +147,7 @@ header::after {
 
 .ave-header2 {
     top: 1px;
-    width: 200px;
+    width: 100px;
     animation-delay: -2s;
     animation-duration: 80s;
 }
@@ -969,6 +969,99 @@ main {
     right: 30px;
 }
 /* =========================
+   FAUNA AMBIENTAL
+========================= */
+
+.fauna-global {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    pointer-events: none;
+
+    overflow: hidden;
+
+    z-index: 2500;
+}
+
+
+/* AVE QUE CRUZA LA PANTALLA */
+
+/* GARZA AMBIENTAL */
+
+#vuelo-garza {
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 75px;
+
+    opacity: 0;
+
+    pointer-events: none;
+}
+
+#ave-cruzando {
+    width: 100%;
+    height: auto;
+
+    display: block;
+
+    pointer-events: none;
+}
+/* =========================================
+   GARZA INTERACTIVA
+========================================= */
+
+#vuelo-garza {
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+#ave-cruzando {
+    pointer-events: auto;
+    cursor: pointer;
+
+    transition:
+        filter 0.25s ease;
+}
+
+/* Pequeña señal visual al encontrarla con el mouse */
+
+#ave-cruzando:hover {
+    filter:
+        drop-shadow(0 0 5px rgba(255, 255, 255, 0.8))
+        drop-shadow(0 0 12px rgba(242, 231, 154, 0.45));
+}
+
+/* DIRECCIÓN DEL AVE */
+
+#ave-cruzando.mira-izquierda {
+    transform: scaleX(1);
+}
+
+#ave-cruzando.mira-derecha {
+    transform: scaleX(-1);
+}
+/* EL GIF EN SU ORIENTACIÓN ORIGINAL */
+
+#ave-cruzando.mira-izquierda {
+    transform: scaleX(1);
+}
+
+
+/* VOLTEAMOS SOLAMENTE LA IMAGEN */
+
+#ave-cruzando.mira-derecha {
+    transform: scaleX(-1);
+}
+
+/* =========================
    DISEÑO PARA CELULARES
 ========================= */
 
@@ -1083,5 +1176,226 @@ main {
 
     .flecha-derecha {
         right: 10px;
+    }
+}
+/* =========================================
+   FICHA INTERACTIVA DE AVES
+========================================= */
+
+.ficha-ave-fondo {
+    position: fixed;
+    inset: 0;
+
+    background: rgba(8, 18, 15, 0.55);
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
+
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+    padding: 25px;
+
+    z-index: 5000;
+}
+
+
+/* TARJETA */
+
+.ficha-ave {
+    position: relative;
+
+    width: min(900px, 92vw);
+    max-height: 88vh;
+
+    display: grid;
+    grid-template-columns: 1.25fr 1fr;
+
+    overflow: hidden;
+
+    border-radius: 22px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(20, 45, 37, 0.92),
+            rgba(8, 20, 18, 0.82)
+        );
+
+    border: 1px solid rgba(255, 255, 255, 0.20);
+
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.55);
+
+    color: white;
+}
+
+
+/* FOTOGRAFÍA */
+
+.ficha-ave-foto {
+    min-height: 480px;
+}
+
+.ficha-ave-foto img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+    object-fit: cover;
+}
+
+
+/* INFORMACIÓN */
+
+.ficha-ave-info {
+    padding: 55px 45px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+.ficha-etiqueta {
+    font-size: 12px;
+    letter-spacing: 3px;
+
+    color: #e8dc83;
+
+    margin-bottom: 12px;
+}
+
+
+.ficha-ave-info h2 {
+    margin: 0;
+
+    font-family: "Cormorant Garamond", Georgia, serif;
+
+    font-size: 46px;
+    font-weight: 600;
+}
+
+
+.nombre-cientifico {
+    margin: 3px 0 20px;
+
+    font-family: Georgia, serif;
+    font-style: italic;
+
+    font-size: 21px;
+
+    color: rgba(255, 255, 255, 0.75);
+}
+
+
+.tamano-ave {
+    width: fit-content;
+
+    padding: 7px 13px;
+
+    border: 1px solid rgba(232, 220, 131, 0.55);
+    border-radius: 20px;
+
+    font-size: 14px;
+
+    color: #f2e79a;
+}
+
+
+.descripcion-ave {
+    margin-top: 20px;
+
+    font-size: 16px;
+    line-height: 1.7;
+
+    color: rgba(255, 255, 255, 0.86);
+}
+
+
+/* BOTÓN EXPLORAR */
+
+.explorar-aves {
+    margin-top: 20px;
+
+    padding: 13px 0;
+
+    background: transparent;
+    border: none;
+
+    border-bottom: 1px solid rgba(232, 220, 131, 0.65);
+
+    color: #f2e79a;
+
+    font-size: 15px;
+
+    text-align: left;
+
+    cursor: pointer;
+}
+
+
+/* CERRAR */
+
+.cerrar-ficha {
+    position: absolute;
+
+    top: 14px;
+    right: 17px;
+
+    width: 38px;
+    height: 38px;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(255, 255, 255, 0.30);
+
+    background: rgba(0, 0, 0, 0.30);
+
+    color: white;
+
+    font-size: 25px;
+    line-height: 32px;
+
+    cursor: pointer;
+
+    z-index: 10;
+}
+
+
+/* =========================================
+   VERSIÓN CELULAR
+========================================= */
+
+@media (max-width: 700px) {
+
+    .ficha-ave-fondo {
+        padding: 15px;
+    }
+
+    .ficha-ave {
+        width: 94vw;
+        max-height: 90vh;
+
+        display: block;
+
+        overflow-y: auto;
+    }
+
+    .ficha-ave-foto {
+        height: 280px;
+        min-height: 0;
+    }
+
+    .ficha-ave-info {
+        padding: 28px 25px 32px;
+    }
+
+    .ficha-ave-info h2 {
+        font-size: 36px;
+    }
+
+    .nombre-cientifico {
+        font-size: 18px;
     }
 }
