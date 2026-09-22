@@ -1399,3 +1399,523 @@ main {
         font-size: 18px;
     }
 }
+/* =========================================
+   AVES DE XOCHIMILCO
+========================================= */
+
+.aves-xochimilco {
+    position: relative;
+    overflow: hidden;
+
+    padding: 100px 50px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(11, 31, 24, 0.98),
+            rgba(27, 52, 38, 0.96)
+        );
+
+    color: white;
+}
+
+
+.aves-xochimilco::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background-image:
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(255, 255, 255, 0.04) 0,
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 80% 70%,
+            rgba(232, 220, 131, 0.05) 0,
+            transparent 35%
+        );
+
+    pointer-events: none;
+}
+
+
+.aves-xochimilco .contenedor {
+    position: relative;
+    z-index: 2;
+}
+
+
+.aves-subtitulo {
+    display: block;
+
+    margin-bottom: 12px;
+
+    font-size: 12px;
+    letter-spacing: 3px;
+
+    color: #e8dc83;
+}
+
+
+.aves-xochimilco h2 {
+    margin: 0 0 25px;
+
+    font-family: "Cormorant Garamond", Georgia, serif;
+
+    font-size: 58px;
+    font-weight: 600;
+}
+
+
+.aves-introduccion {
+    max-width: 760px;
+
+    font-size: 20px;
+    line-height: 1.7;
+
+    color: rgba(255, 255, 255, 0.88);
+}
+
+
+.aves-frase {
+    max-width: 680px;
+
+    margin: 25px 0 55px;
+
+    font-family: Georgia, serif;
+    font-style: italic;
+
+    font-size: 21px;
+    line-height: 1.6;
+
+    color: rgba(232, 220, 131, 0.90);
+}
+/* =========================================
+   MINI FICHA DE ESPECIE
+========================================= */
+
+/* =========================================
+   CONTENEDOR DE TARJETAS DE AVES
+========================================= */
+
+.aves-descubiertas {
+    width: 100%;
+    max-width: 1200px;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 28px;
+
+    align-items: stretch;
+}       
+
+/* Mientras haya pocas especies,
+   cada ficha conserva tamaño de guía */
+
+.mini-ficha-ave {
+    width: 100%;
+    min-width: 0;
+
+    overflow: hidden;
+
+    border-radius: 18px;
+
+    background:
+        rgba(255, 255, 255, 0.07);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.15);
+
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
+
+    box-shadow:
+        0 18px 45px rgba(0, 0, 0, 0.25);
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+.mini-ficha-ave:hover {
+    transform:
+        translateY(-7px);
+
+    box-shadow:
+        0 25px 55px rgba(0, 0, 0, 0.35);
+}
+
+
+.mini-ficha-imagen {
+    height: 260px;
+
+    overflow: hidden;
+}
+
+
+.mini-ficha-imagen img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: 68% center;
+
+    transition:
+        transform 0.6s ease;
+}
+
+
+.mini-ficha-ave:hover img {
+    transform:
+        scale(1.06);
+}
+
+
+.mini-ficha-info {
+    padding: 25px 28px 30px;
+}
+
+
+.estado-especie {
+    font-size: 10px;
+    letter-spacing: 2px;
+
+    color: #e8dc83;
+}
+
+
+.mini-ficha-info h3 {
+    margin:
+        9px 0 3px;
+
+    font-family:
+        "Cormorant Garamond",
+        Georgia,
+        serif;
+
+    font-size: 32px;
+
+    color: white;
+}
+
+
+.mini-cientifico {
+    margin: 0 0 12px;
+
+    font-family: Georgia, serif;
+    font-style: italic;
+
+    color:
+        rgba(255, 255, 255, 0.70);
+}
+
+
+.mini-tamano {
+    margin: 0;
+
+    font-size: 14px;
+
+    color: #f2e79a;
+}
+.aves-xochimilco {
+    padding: 75px 20px;
+}
+
+.aves-xochimilco h2 {
+    font-size: 44px;
+}
+
+.aves-introduccion {
+    font-size: 18px;
+}
+
+.aves-frase {
+    font-size: 18px;
+}
+
+/* =========================================
+   CONTENEDOR DE TARJETAS DE AVES
+========================================= */
+
+.aves-descubiertas {
+    width: 100%;
+    max-width: 1200px;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns: 1fr;
+    gap: 22px;
+
+    align-items: stretch;
+}
+/* =========================================
+   ESPECIES POR DESCUBRIR
+========================================= */
+
+.especie-misteriosa {
+    width: 100%;
+    min-width: 0;
+    min-height: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.04),
+            rgba(0, 0, 0, 0.18)
+        );
+
+    border:
+        1px dashed rgba(232, 220, 131, 0.35);
+}
+
+
+.misterio-silueta {
+    height: 260px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family:
+        "Cormorant Garamond",
+        Georgia,
+        serif;
+
+    font-size: 120px;
+
+    color:
+        rgba(232, 220, 131, 0.13);
+}
+
+
+.especie-misteriosa .mini-ficha-info {
+    opacity: 0.7;
+}
+
+
+.especie-misteriosa:hover {
+    transform:
+        translateY(-5px);
+
+    border-color:
+        rgba(232, 220, 131, 0.60);
+}
+
+
+.especie-misteriosa:hover .misterio-silueta {
+    color:
+        rgba(232, 220, 131, 0.25);
+}
+/* =========================================
+   CORRECCION GRID AVES
+========================================= */
+
+.aves-descubiertas {
+    width: min(1200px, calc(100% - 40px)) !important;
+    margin: 40px auto 0 !important;
+
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+
+    gap: 28px !important;
+    align-items: stretch !important;
+}
+
+
+/* TODAS LAS TARJETAS */
+.aves-descubiertas > * {
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+
+    margin: 0 !important;
+    box-sizing: border-box !important;
+}
+
+
+/* GARZA */
+.aves-descubiertas .mini-ficha-ave {
+    width: 100% !important;
+    max-width: none !important;
+}
+
+
+/* TARJETAS MISTERIOSAS */
+.aves-descubiertas .especie-misteriosa {
+    width: 100% !important;
+    max-width: none !important;
+
+    min-height: 430px;
+}
+
+
+/* MÓVIL */
+@media (max-width: 768px) {
+
+    .aves-descubiertas {
+        grid-template-columns: 1fr !important;
+        width: calc(100% - 30px) !important;
+        gap: 22px !important;
+    }
+
+}
+/* =========================================
+   GALLINETA AMBIENTAL
+========================================= */
+
+.gallineta-ambiente {
+    position: fixed;
+
+    right: 4%;
+    bottom: 6%;
+
+    width: 150px;
+
+    z-index: 20;
+
+    opacity: 0;
+
+    transform:
+        translateY(20px)
+        scale(0.9);
+
+    transition:
+        opacity 1.2s ease,
+        transform 1.2s ease;
+
+    pointer-events: none;
+}
+
+
+.gallineta-ambiente.visible {
+    opacity: 1;
+
+    transform:
+        translateY(0)
+        scale(1);
+
+    pointer-events: auto;
+}
+
+
+.gallineta-ambiente img {
+    width: 100%;
+    height: auto;
+
+    display: block;
+
+    cursor: pointer;
+
+    filter:
+        drop-shadow(
+            0 8px 8px
+            rgba(0,0,0,0.35)
+        );
+
+    transition:
+        transform 0.4s ease,
+        filter 0.4s ease;
+}
+
+
+/* cuando acercamos el cursor */
+
+.gallineta-ambiente img:hover {
+
+    transform:
+        scale(1.06);
+
+    filter:
+        drop-shadow(
+            0 10px 12px
+            rgba(0,0,0,0.45)
+        );
+}
+
+
+/* CELULAR */
+
+@media (max-width: 768px) {
+
+    .gallineta-ambiente {
+        width: 105px;
+
+        right: 3%;
+        bottom: 4%;
+    }
+
+}
+/* =========================================
+   EFECTO DESCUBRIMIENTO
+========================================= */
+
+.gallineta-ambiente::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 40px;
+    height: 40px;
+
+    border-radius: 50%;
+
+    border:
+        2px solid rgba(235, 220, 110, 0.9);
+
+    transform:
+        translate(-50%, -50%)
+        scale(0);
+
+    opacity: 0;
+
+    pointer-events: none;
+}
+
+
+.gallineta-ambiente.descubierta::after {
+
+    animation:
+        descubrirAve 0.9s ease-out;
+}
+
+
+@keyframes descubrirAve {
+
+    0% {
+        transform:
+            translate(-50%, -50%)
+            scale(0.2);
+
+        opacity: 1;
+    }
+
+    70% {
+        opacity: 0.6;
+    }
+
+    100% {
+        transform:
+            translate(-50%, -50%)
+            scale(5);
+
+        opacity: 0;
+    }
+
+}

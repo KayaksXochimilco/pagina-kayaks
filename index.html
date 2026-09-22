@@ -202,6 +202,132 @@
     </div>
 
 </section>
+<!-- =========================================
+     AVES DE XOCHIMILCO
+========================================= -->
+
+<section class="aves-xochimilco" id="aves-xochimilco">
+
+    <div class="contenedor">
+
+        <span class="aves-subtitulo">
+            BIODIVERSIDAD DEL HUMEDAL
+        </span>
+
+        <h2>Aves de Xochimilco</h2>
+
+        <p class="aves-introduccion">
+            A veces están frente a nosotros y no sabemos sus nombres.
+            Basta detenerse y observar su forma, sus colores,
+            su tamaño y su comportamiento para comenzar a reconocerlas.
+        </p>
+
+        <p class="aves-frase">
+            El recorrido cambia cuando dejamos de ver solamente aves
+            y empezamos a reconocer especies.
+        </p>
+
+
+        <div class="aves-descubiertas">
+
+
+            <!-- =========================
+                 PRIMERA ESPECIE
+            ========================== -->
+
+            <article class="mini-ficha-ave">
+
+                <div class="mini-ficha-imagen">
+
+                    <img
+                        src="imagenes/galeria2.jpeg"
+                        alt="Garza blanca en Xochimilco"
+                    >
+
+                </div>
+
+                <div class="mini-ficha-info">
+
+                    <span class="estado-especie">
+                        ESPECIE DESCUBIERTA
+                    </span>
+
+                    <h3>Garza blanca</h3>
+
+                    <p class="mini-cientifico">
+                        Ardea alba
+                    </p>
+
+                    <p class="mini-tamano">
+                        84–100 cm
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <!-- =========================
+                 ESPECIE POR DESCUBRIR 1
+            ========================== -->
+
+            <article
+                   class="mini-ficha-ave especie-misteriosa"
+                   id="tarjeta-gallineta"
+            >
+                <div class="misterio-silueta">
+                    ?
+                </div>
+
+                <div class="mini-ficha-info">
+
+                    <span class="estado-especie">
+                        POR DESCUBRIR
+                    </span>
+
+                    <h3>Especie desconocida</h3>
+
+                    <p class="mini-cientifico">
+                        Sigue observando el humedal
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <!-- =========================
+                 ESPECIE POR DESCUBRIR 2
+            ========================== -->
+
+            <article class="mini-ficha-ave especie-misteriosa">
+
+                <div class="misterio-silueta">
+                    ?
+                </div>
+
+                <div class="mini-ficha-info">
+
+                    <span class="estado-especie">
+                        POR DESCUBRIR
+                    </span>
+
+                    <h3>Especie desconocida</h3>
+
+                    <p class="mini-cientifico">
+                        Puede aparecer en cualquier momento
+                    </p>
+
+                </div>
+
+            </article>
+
+
+        </div> <!-- FIN aves-descubiertas -->
+
+    </div> <!-- FIN contenedor -->
+
+</section>
 
 <section class="nosotros" id="nosotros">
 
@@ -273,9 +399,12 @@
         </button>
 
         <div class="ficha-ave-foto">
+
             <img
-                src="imagenes/garza-blanca-ficha.jpeg"
-                alt="Garza blanca en Xochimilco">
+                src="imagenes/galeria2.jpeg"
+                alt="Garza blanca en vuelo en Xochimilco"
+            >
+
         </div>
 
         <div class="ficha-ave-info">
@@ -300,18 +429,86 @@
                 mientras busca alimento en aguas poco profundas.
             </p>
 
-            <button class="explorar-aves">
+            <a class="explorar-aves" href="#aves-xochimilco">
                 Explorar las aves de Xochimilco →
-            </button>
+            </a>
 
         </div>
 
     </div>
 
-</div>    
+</div>
+<!-- =========================
+     FICHA GALLINETA
+========================= -->
+
+<div class="ficha-ave-fondo" id="ficha-gallineta">
+
+    <div class="ficha-ave">
+
+        <button
+            class="cerrar-ficha"
+            id="cerrar-ficha-gallineta"
+        >
+            &times;
+        </button>
+
+        <div class="ficha-ave-foto">
+
+            <img
+                src="imagenes/gallareta1.jpg"
+                alt="Gallineta frente roja en Xochimilco"
+            >
+
+        </div>
+
+        <div class="ficha-ave-info">
+
+            <span class="ficha-etiqueta">
+                ESPECIE DESCUBIERTA
+            </span>
+
+            <h2>Gallineta frente roja</h2>
+
+            <p class="nombre-cientifico">
+                Gallinula galeata
+            </p>
+
+            <p class="descripcion-ave">
+                Habitante de canales y zonas con vegetación acuática.
+                Suele desplazarse entre la vegetación y nadar cerca
+                de las orillas.
+            </p>
+
+            <a
+                class="explorar-aves"
+                href="#aves-xochimilco"
+            >
+                Explorar las aves de Xochimilco →
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- GALLINETA INTERACTIVA -->
+
+<div class="gallineta-ambiente" id="gallineta-ambiente">
+
+    <img
+        src="imagenes/gallareta3.png"
+        alt="Gallineta de frente roja"
+        id="gallineta-interactiva"
+    >
+
+</div>
+
 
 <script src="script.js"></script>
 
 </body>
 
 </html>
+

@@ -384,3 +384,211 @@ fichaGarza.addEventListener("click", function (evento) {
     }
 
 });
+/* =========================================
+   GALLINETA AMBIENTAL
+========================================= */
+
+const gallinetaAmbiente =
+    document.getElementById("gallineta-ambiente");
+
+function mostrarGallineta() {
+
+    if (!gallinetaAmbiente) return;
+
+    gallinetaAmbiente.classList.add("visible");
+}
+
+
+// Aparece inesperadamente entre 6 y 14 segundos
+
+const esperaGallineta =
+    Math.random() * 8000 + 6000;
+
+setTimeout(
+    mostrarGallineta,
+    esperaGallineta
+);
+/* =========================================
+   INTERACCION GALLINETA
+========================================= */
+
+const gallinetaInteractiva =
+    document.getElementById("gallineta-interactiva");
+
+if (gallinetaInteractiva) {
+
+    document.addEventListener("mousemove", function(event) {
+
+        const rect =
+            gallinetaInteractiva.getBoundingClientRect();
+
+        const centroX =
+            rect.left + rect.width / 2;
+
+        const centroY =
+            rect.top + rect.height / 2;
+
+        const distanciaX =
+            event.clientX - centroX;
+
+        const distanciaY =
+            event.clientY - centroY;
+
+        const distancia =
+            Math.sqrt(
+                distanciaX * distanciaX +
+                distanciaY * distanciaY
+            );
+
+
+        // Solo reacciona cuando estamos cerca
+        if (distancia < 280) {
+
+            const giro =
+                Math.max(
+                    -5,
+                    Math.min(5, distanciaX / 35)
+                );
+
+            const inclinacion =
+                Math.max(
+                    -3,
+                    Math.min(3, distanciaY / 60)
+                );
+
+            gallinetaInteractiva.style.transform =
+                `scale(1.04)
+                 rotate(${giro + inclinacion}deg)`;
+
+        } else {
+
+            gallinetaInteractiva.style.transform =
+                "scale(1) rotate(0deg)";
+        }
+
+    });
+
+}
+/* =========================================
+   DESCUBRIR GALLINETA
+========================================= */
+
+const fichaGallineta =
+    document.getElementById("ficha-gallineta");
+
+const cerrarFichaGallineta =
+    document.getElementById("cerrar-ficha-gallineta");
+
+
+/* ABRIR FICHA */
+
+gallinetaInteractiva.addEventListener("click", function () {
+
+    /* DESTELLO */
+
+    gallinetaAmbiente.classList.remove("descubierta");
+
+    void gallinetaAmbiente.offsetWidth;
+
+    gallinetaAmbiente.classList.add("descubierta");
+
+
+    /* ABRIR FICHA DESPUÉS DEL DESTELLO */
+
+    setTimeout(function () {
+
+         fichaGallineta.style.display = "flex";
+
+         descubrirGallineta();
+
+     }, 450);
+
+});
+
+
+/* CERRAR CON LA X */
+
+cerrarFichaGallineta.addEventListener("click", function () {
+
+    fichaGallineta.style.display = "none";
+
+});
+
+
+/* CERRAR TOCANDO EL FONDO */
+
+fichaGallineta.addEventListener("click", function (evento) {
+
+    if (evento.target === fichaGallineta) {
+
+        fichaGallineta.style.display = "none";
+
+    }
+
+});
+/* =========================================
+   COLECCION - GALLINETA DESCUBIERTA
+========================================= */
+
+const tarjetaGallineta =
+    document.getElementById("tarjeta-gallineta");
+
+
+function descubrirGallineta() {
+
+    console.log("ENTRÓ A descubrirGallineta");
+    console.log("Tarjeta encontrada:", tarjetaGallineta);
+
+    if (!tarjetaGallineta) return;
+
+    localStorage.setItem(
+        "gallinetaDescubierta",
+        "si"
+    );
+
+    tarjetaGallineta.classList.remove(
+        "especie-misteriosa"
+    );
+
+    tarjetaGallineta.innerHTML = `
+        <div class="mini-ficha-imagen">
+
+            <img
+                src="imagenes/gallareta1.jpg"
+                alt="Gallineta frente roja en Xochimilco"
+            >
+
+        </div>
+
+        <div class="mini-ficha-info">
+
+            <span class="estado-especie">
+                ESPECIE DESCUBIERTA
+            </span>
+
+            <h3>Gallineta frente roja</h3>
+
+            <p class="mini-cientifico">
+                Gallinula galeata
+            </p>
+
+            <p class="mini-tamano">
+                Descubierta durante el recorrido
+            </p>
+
+        </div>
+    `;
+
+}
+/* =========================================
+   RECUPERAR DESCUBRIMIENTOS
+========================================= */
+
+if (
+    localStorage.getItem("gallinetaDescubierta")
+    === "si"
+) {
+
+    descubrirGallineta();
+
+}
