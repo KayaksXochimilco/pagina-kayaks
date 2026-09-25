@@ -29,13 +29,14 @@
         </div>
 
         <nav>
-            <a href="#inicio">Inicio</a>
-            <a href="#recorridos">Recorridos</a>
-            <a href="#galeria">Galería</a>
-            <a href="#nosotros">Nosotros</a>
-            <a href="#contacto">Contacto</a>
-        </nav>
-
+    <a href="#inicio">Inicio</a>
+    <a href="#recorridos">Recorridos</a>
+    <a href="#galeria">Galería</a>
+    <a href="#aves-xochimilco">Aves de Xochimilco</a>
+    <a href="#nosotros">Nosotros</a>
+    <a href="#contacto">Contacto</a>
+    </nav>
+   
     </header>
 
 
@@ -249,7 +250,7 @@
                 <div class="mini-ficha-info">
 
                     <span class="estado-especie">
-                        ESPECIE DESCUBIERTA
+                        Especie de amplia distribución mundial
                     </span>
 
                     <h3>Garza blanca</h3>
@@ -259,7 +260,7 @@
                     </p>
 
                     <p class="mini-tamano">
-                        84–100 cm
+                        Familia: Ardeidae, Tamaño: aproximadamente 84–100 cm de altura. 
                     </p>
 
                 </div>
@@ -269,12 +270,14 @@
 
             <!-- =========================
                  ESPECIE POR DESCUBRIR 1
+                 GALLINETA
             ========================== -->
 
             <article
-                   class="mini-ficha-ave especie-misteriosa"
-                   id="tarjeta-gallineta"
+                class="mini-ficha-ave especie-misteriosa"
+                id="tarjeta-gallineta"
             >
+
                 <div class="misterio-silueta">
                     ?
                 </div>
@@ -298,9 +301,13 @@
 
             <!-- =========================
                  ESPECIE POR DESCUBRIR 2
+                 ZAMBULLIDOR
             ========================== -->
 
-            <article class="mini-ficha-ave especie-misteriosa">
+            <article
+                class="mini-ficha-ave especie-misteriosa"
+                id="tarjeta-zambullidor"
+            >
 
                 <div class="misterio-silueta">
                     ?
@@ -323,11 +330,58 @@
             </article>
 
 
-        </div> <!-- FIN aves-descubiertas -->
+        </div>
+        <!-- FIN aves-descubiertas -->
 
-    </div> <!-- FIN contenedor -->
+
+    </div>
+    <!-- FIN contenedor -->
+
+
+    <!-- =====================================
+         GALLINETA INTERACTIVA
+         PARTE INFERIOR IZQUIERDA
+    ====================================== -->
+
+    <div
+        class="gallineta-ambiente"
+        id="gallineta-ambiente"
+    >
+
+        <img
+            src="imagenes/gallareta3.png"
+            alt="Gallineta de frente roja"
+            id="gallineta-interactiva"
+        >
+
+    </div>
+
+
+    <!-- =====================================
+         ZAMBULLIDOR INTERACTIVO
+         PARTE INFERIOR DERECHA
+    ====================================== -->
+
+    <div
+        class="zambullidor-ambiente"
+        id="zambullidor-ambiente"
+    >
+
+        <img
+            src="imagenes/zambullidor2.png"
+            alt="Zambullidor"
+            id="zambullidor-interactivo"
+        >
+
+    </div>
+
 
 </section>
+
+
+<!-- =========================================
+     NOSOTROS
+========================================= -->
 
 <section class="nosotros" id="nosotros">
 
@@ -344,6 +398,11 @@
     </div>
 
 </section>
+
+
+<!-- =========================================
+     CONTACTO
+========================================= -->
 
 <section class="contacto" id="contacto">
 
@@ -362,50 +421,82 @@
 
 </main>
 
-    <div class="lightbox" id="lightbox">
 
-      <span class="cerrar">&times;</span>
+<!-- =========================================
+     LIGHTBOX GALERIA
+========================================= -->
 
-      <button class="flecha flecha-izquierda">&#10094;</button>
+<div class="lightbox" id="lightbox">
 
-      <img class="lightbox-img" id="lightbox-img" src="" alt="">
+    <span class="cerrar">
+        &times;
+    </span>
 
-      <button class="flecha flecha-derecha">&#10095;</button>
-    
-</div> 
-<!-- FAUNA AMBIENTAL -->
+    <button class="flecha flecha-izquierda">
+        &#10094;
+    </button>
 
-   <div class="fauna-global">
+    <img
+        class="lightbox-img"
+        id="lightbox-img"
+        src=""
+        alt=""
+    >
+
+    <button class="flecha flecha-derecha">
+        &#10095;
+    </button>
+
+</div>
+
+
+<!-- =========================================
+     GARZA VOLADORA
+========================================= -->
+
+<div class="fauna-global">
 
     <div id="vuelo-garza">
+
         <img
             id="ave-cruzando"
             src="imagenes/garza-blanca.gif"
-            alt=""
+            alt="Garza blanca volando"
         >
+
     </div>
 
 </div>
-<!-- =========================
-     FICHA GARZA BLANCA
-========================= -->
 
-<div class="ficha-ave-fondo" id="ficha-garza">
+
+<!-- =========================================
+     FICHA GARZA BLANCA
+========================================= -->
+
+<div
+    class="ficha-ave-fondo"
+    id="ficha-garza"
+>
 
     <div class="ficha-ave">
 
-        <button class="cerrar-ficha" id="cerrar-ficha-garza">
+        <button
+            class="cerrar-ficha"
+            id="cerrar-ficha-garza"
+        >
             &times;
         </button>
+
 
         <div class="ficha-ave-foto">
 
             <img
                 src="imagenes/galeria2.jpeg"
-                alt="Garza blanca en vuelo en Xochimilco"
+                alt="Garza blanca en Xochimilco"
             >
 
         </div>
+
 
         <div class="ficha-ave-info">
 
@@ -413,7 +504,9 @@
                 AVES DE XOCHIMILCO
             </span>
 
-            <h2>Garza blanca</h2>
+            <h2>
+                Garza blanca
+            </h2>
 
             <p class="nombre-cientifico">
                 Ardea alba
@@ -429,7 +522,10 @@
                 mientras busca alimento en aguas poco profundas.
             </p>
 
-            <a class="explorar-aves" href="#aves-xochimilco">
+            <a
+                class="explorar-aves"
+                href="#aves-xochimilco"
+            >
                 Explorar las aves de Xochimilco →
             </a>
 
@@ -438,11 +534,16 @@
     </div>
 
 </div>
-<!-- =========================
-     FICHA GALLINETA
-========================= -->
 
-<div class="ficha-ave-fondo" id="ficha-gallineta">
+
+<!-- =========================================
+     FICHA GALLINETA
+========================================= -->
+
+<div
+    class="ficha-ave-fondo"
+    id="ficha-gallineta"
+>
 
     <div class="ficha-ave">
 
@@ -453,6 +554,7 @@
             &times;
         </button>
 
+
         <div class="ficha-ave-foto">
 
             <img
@@ -462,13 +564,16 @@
 
         </div>
 
+
         <div class="ficha-ave-info">
 
             <span class="ficha-etiqueta">
                 ESPECIE DESCUBIERTA
             </span>
 
-            <h2>Gallineta frente roja</h2>
+            <h2>
+                Gallineta frente roja
+            </h2>
 
             <p class="nombre-cientifico">
                 Gallinula galeata
@@ -492,23 +597,73 @@
     </div>
 
 </div>
+<!-- =========================================
+     FICHA ZAMBULLIDOR
+========================================= -->
 
-<!-- GALLINETA INTERACTIVA -->
+<div
+    class="ficha-ave-fondo"
+    id="ficha-zambullidor"
+>
 
-<div class="gallineta-ambiente" id="gallineta-ambiente">
+    <div class="ficha-ave">
 
-    <img
-        src="imagenes/gallareta3.png"
-        alt="Gallineta de frente roja"
-        id="gallineta-interactiva"
-    >
+        <button
+            class="cerrar-ficha"
+            id="cerrar-ficha-zambullidor"
+        >
+            &times;
+        </button>
+
+        <div class="ficha-ave-foto">
+
+            <img
+                src="imagenes/Zambullidor.jpg"
+                alt="Zambullidor en Xochimilco"
+            >
+
+        </div>
+
+        <div class="ficha-ave-info">
+
+            <span class="ficha-etiqueta">
+                ESPECIE DESCUBIERTA
+            </span>
+
+            <h2>
+                Zambullidor
+            </h2>
+
+            <p class="nombre-cientifico">
+                Tachybaptus dominicus
+            </p>
+
+            <p class="descripcion-ave">
+                Pequeña ave acuática que habita canales,
+                lagunas y zonas tranquilas del humedal.
+                Se desplaza nadando sobre la superficie
+                y puede sumergirse para buscar alimento.
+            </p>
+
+            <a
+                class="explorar-aves"
+                href="#aves-xochimilco"
+            >
+                Explorar las aves de Xochimilco →
+            </a>
+
+        </div>
+
+    </div>
 
 </div>
 
+<!-- =========================================
+     JAVASCRIPT
+========================================= -->
 
 <script src="script.js"></script>
 
 </body>
 
 </html>
-

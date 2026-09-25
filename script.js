@@ -90,9 +90,9 @@ lightbox.addEventListener("click", function(evento) {
     }
 
 });
-/* =========================
-   FAUNA AMBIENTAL
-========================= */
+/* =========================================
+   GARZA - SOLO EN AVES DE XOCHIMILCO
+========================================= */
 
 const aveCruzando =
     document.getElementById("ave-cruzando");
@@ -100,250 +100,322 @@ const aveCruzando =
 const vueloGarza =
     document.getElementById("vuelo-garza");
 
+const seccionAves =
+    document.getElementById("aves-xochimilco");
+
+let garzaActiva = false;
+let temporizadorGarza = null;
+let animacionGarza = null;
+
+
+/* =========================================
+   LANZAR GARZA
+========================================= */
 
 function lanzarAve() {
 
-    // Elegimos una de cuatro trayectorias
-    const trayectoria =
-        Math.floor(Math.random() * 4);
+    if (
+        !garzaActiva ||
+        !aveCruzando ||
+        !vueloGarza ||
+        !seccionAves
+    ) return;
 
-    // Duración entre 13 y 19 segundos
+
+    /* Cancelamos cualquier vuelo anterior */
+
+    if (animacionGarza) {
+        animacionGarza.cancel();
+    }
+
+
+    /* =====================================
+       MEDIDAS DE LA SECCIÓN VERDE
+    ===================================== */
+
+    const ancho =
+        seccionAves.offsetWidth;
+
+    const alto =
+        seccionAves.offsetHeight;
+
+
+    /*
+       La garza volará únicamente dentro
+       de esta zona vertical de la sección.
+    */
+
+    const y1 = alto * 0.18;
+    const y2 = alto * 0.30;
+    const y3 = alto * 0.22;
+
+
+    /* =====================================
+       DIRECCIÓN ALEATORIA
+    ===================================== */
+
+    const izquierdaADerecha =
+        Math.random() > 0.5;
+
     const duracion =
-        Math.random() * 6 + 13;
+        Math.random() * 4 + 10;
 
 
-    /* =========================
-       1. IZQUIERDA → DERECHA
-    ========================= */
+    /* =====================================
+       IZQUIERDA → DERECHA
+    ===================================== */
 
-    if (trayectoria === 0) {
+    if (izquierdaADerecha) {
 
-        // Volteamos únicamente la imagen
-        // para que el pico mire hacia la derecha
-        aveCruzando.classList.remove("mira-izquierda");
-        aveCruzando.classList.add("mira-derecha");
-
-        vueloGarza.animate(
-            [
-                {
-                    transform:
-                        "translate(100px, 30vh) scale(0.2) rotate(0deg)",
-                    opacity: 0
-                },
-
-                {
-                    transform:
-                        "translate(20vw, 25vh) scale(0.8) rotate(-3deg)",
-                    opacity: 1
-                },
-
-                {
-                    transform:
-                        "translate(50vw, 40vh) scale(1.5) rotate(3deg)",
-                    opacity: 1
-                },
-
-                {
-                    transform:
-                        "translate(80vw, 30vh) scale(1) rotate(-2deg)",
-                    opacity: 1
-                },
-
-                {
-                    transform:
-                        "translate(115vw, 20vh) scale(0.5) rotate(0deg)",
-                    opacity: 0
-                }
-            ],
-
-            {
-                duration: duracion * 1000,
-                easing: "ease-in-out",
-                fill: "none"
-            }
+        aveCruzando.classList.remove(
+            "mira-izquierda"
         );
+
+        aveCruzando.classList.add(
+            "mira-derecha"
+        );
+
+
+        animacionGarza =
+            vueloGarza.animate(
+
+                [
+                    {
+                        transform:
+                            `translate(-250px, ${y1}px) scale(0.55)`,
+                        opacity: 0
+                    },
+
+                    {
+                        transform:
+                            `translate(${ancho * 0.20}px, ${y2}px) scale(0.85)`,
+                        opacity: 1
+                    },
+
+                    {
+                        transform:
+                            `translate(${ancho * 0.50}px, ${y3}px) scale(1.1)`,
+                        opacity: 1
+                    },
+
+                    {
+                        transform:
+                            `translate(${ancho * 0.78}px, ${y2}px) scale(0.85)`,
+                        opacity: 1
+                    },
+
+                    {
+                        transform:
+                            `translate(${ancho + 250}px, ${y1}px) scale(0.55)`,
+                        opacity: 0
+                    }
+                ],
+
+                {
+                    duration:
+                        duracion * 1000,
+
+                    easing:
+                        "ease-in-out",
+
+                    fill:
+                        "none"
+                }
+            );
     }
 
 
-    /* =========================
-       2. DERECHA → IZQUIERDA
-    ========================= */
-
-    else if (trayectoria === 1) {
-
-        // Orientación original del GIF
-        aveCruzando.classList.remove("mira-derecha");
-        aveCruzando.classList.add("mira-izquierda");
-
-        vueloGarza.animate(
-            [
-                {
-                    transform:
-                        "translate(115vw, 20vh) scale(0.1) rotate(0deg)",
-                    opacity: 0
-                },
-
-                {
-                    transform:
-                        "translate(80vw, 32vh) scale(1) rotate(2deg)",
-                    opacity: 1
-                },
-
-                {
-                    transform:
-                        "translate(52vw, 25vh) scale(1.5) rotate(-3deg)",
-                    opacity: 1
-                },
-
-                {
-                    transform:
-                        "translate(25vw, 38vh) scale(0.9) rotate(2deg)",
-                    opacity: 1
-                },
-
-                {
-                    transform:
-                        "translate(-350px, 30vh) scale(0.4) rotate(0deg)",
-                    opacity: 0
-                }
-            ],
-
-            {
-                duration: duracion * 1000,
-                easing: "ease-in-out"
-            }
-        );
-    }
-
-
-    /* =========================
-       3. DIAGONAL ABAJO → ARRIBA
-       siempre hacia la derecha
-    ========================= */
-
-    else if (trayectoria === 2) {
-
-        aveCruzando.classList.remove("mira-izquierda");
-        aveCruzando.classList.add("mira-derecha");
-
-        vueloGarza.animate(
-            [
-                {
-                    transform:
-                        "translate(5vw, 110vh) scale(1.5) rotate(-10deg)",
-                    opacity: 0
-                },
-
-                {
-                    transform:
-                        "translate(25vw, 75vh) scale(1.3) rotate(-8deg)",
-                    opacity: 1
-                },
-
-                {
-                    transform:
-                        "translate(48vw, 50vh) scale(1) rotate(-5deg)",
-                    opacity: 1
-                },
-
-                {
-                    transform:
-                        "translate(72vw, 25vh) scale(0.7) rotate(-3deg)",
-                    opacity: 1
-                },
-
-                {
-                    transform:
-                        "translate(100vw, -200px) scale(0.35) rotate(0deg)",
-                    opacity: 0
-                }
-            ],
-
-            {
-                duration: duracion * 1000,
-                easing: "ease-out"
-            }
-        );
-    }
-
-
-    /* =========================
-       4. VUELO ONDULANTE
-       SIN VOLAR HACIA ATRÁS
-    ========================= */
+    /* =====================================
+       DERECHA → IZQUIERDA
+    ===================================== */
 
     else {
 
-        aveCruzando.classList.remove("mira-izquierda");
-        aveCruzando.classList.add("mira-derecha");
-
-        vueloGarza.animate(
-            [
-                {
-                    transform:
-                        "translate(-350px, 55vh) scale(0.45) rotate(0deg)",
-                    opacity: 0
-                },
-
-                {
-                    transform:
-                        "translate(18vw, 38vh) scale(0.75) rotate(-5deg)",
-                    opacity: 1
-                },
-
-                {
-                    transform:
-                        "translate(38vw, 18vh) scale(1.2) rotate(4deg)",
-                    opacity: 1
-                },
-
-                {
-                    transform:
-                        "translate(58vw, 35vh) scale(1.6) rotate(-3deg)",
-                    opacity: 1
-                },
-
-                {
-                    transform:
-                        "translate(78vw, 22vh) scale(1) rotate(3deg)",
-                    opacity: 1
-                },
-
-                {
-                    transform:
-                        "translate(112vw, 40vh) scale(0.45) rotate(0deg)",
-                    opacity: 0
-                }
-            ],
-
-            {
-                duration: duracion * 1000,
-                easing: "ease-in-out"
-            }
+        aveCruzando.classList.remove(
+            "mira-derecha"
         );
+
+        aveCruzando.classList.add(
+            "mira-izquierda"
+        );
+
+
+        animacionGarza =
+            vueloGarza.animate(
+
+                [
+                    {
+                        transform:
+                            `translate(${ancho + 250}px, ${y1}px) scale(0.55)`,
+                        opacity: 0
+                    },
+
+                    {
+                        transform:
+                            `translate(${ancho * 0.78}px, ${y2}px) scale(0.85)`,
+                        opacity: 1
+                    },
+
+                    {
+                        transform:
+                            `translate(${ancho * 0.50}px, ${y3}px) scale(1.1)`,
+                        opacity: 1
+                    },
+
+                    {
+                        transform:
+                            `translate(${ancho * 0.20}px, ${y2}px) scale(0.85)`,
+                        opacity: 1
+                    },
+
+                    {
+                        transform:
+                            `translate(-250px, ${y1}px) scale(0.55)`,
+                        opacity: 0
+                    }
+                ],
+
+                {
+                    duration:
+                        duracion * 1000,
+
+                    easing:
+                        "ease-in-out",
+
+                    fill:
+                        "none"
+                }
+            );
     }
 
 
-    // Cuando termina el vuelo,
-    // esperamos y lanzamos otro
-    setTimeout(
-        programarSiguienteAve,
-        duracion * 1000
-    );
+    /* =====================================
+       AL TERMINAR
+    ===================================== */
+
+    animacionGarza.onfinish =
+        function () {
+
+            if (!garzaActiva) return;
+
+            programarSiguienteAve();
+        };
 }
 
+
+/* =========================================
+   PROGRAMAR SIGUIENTE APARICIÓN
+========================================= */
 
 function programarSiguienteAve() {
 
-    // Para probar: aparece entre 2 y 5 segundos
-    const esperaInicial =
-    Math.random() * 3000 + 1500;
+    if (!garzaActiva) return;
 
-    setTimeout(lanzarAve, esperaInicial);
+    clearTimeout(
+        temporizadorGarza
+    );
+
+
+    /*
+       Nueva aparición entre
+       3 y 7 segundos.
+    */
+
+    const espera =
+        Math.random() * 4000 + 3000;
+
+
+    temporizadorGarza =
+        setTimeout(
+            lanzarAve,
+            espera
+        );
 }
 
-// Arrancamos el ciclo
-programarSiguienteAve();
+
+/* =========================================
+   DETECTAR SECCIÓN AVES
+========================================= */
+
+const observadorAves =
+    new IntersectionObserver(
+
+        function (entradas) {
+
+            entradas.forEach(
+                function (entrada) {
+
+                    /* =====================
+                       ENTRAMOS A LA SECCIÓN
+                    ===================== */
+
+                    if (entrada.isIntersecting) {
+
+                        garzaActiva = true;
+
+                        /*
+                           Primera aparición
+                           relativamente rápida.
+                        */
+
+                        clearTimeout(
+                            temporizadorGarza
+                        );
+
+                        temporizadorGarza =
+                            setTimeout(
+                                lanzarAve,
+                                1000
+                            );
+                    }
+
+
+                    /* =====================
+                       SALIMOS DE LA SECCIÓN
+                    ===================== */
+
+                    else {
+
+                        garzaActiva = false;
+
+                        clearTimeout(
+                            temporizadorGarza
+                        );
+
+                        if (animacionGarza) {
+
+                            animacionGarza.cancel();
+
+                            animacionGarza = null;
+                        }
+
+                        vueloGarza.style.opacity =
+                            "0";
+                    }
+
+                }
+            );
+
+        },
+
+        {
+            /*
+               Consideramos activa la sección
+               cuando aproximadamente 20 %
+               está visible.
+            */
+
+            threshold: 0.20
+        }
+    );
+
+
+if (seccionAves) {
+
+    observadorAves.observe(
+        seccionAves
+    );
+}
 /* =========================================
    FICHA INTERACTIVA - GARZA BLANCA
 ========================================= */
@@ -386,10 +458,12 @@ fichaGarza.addEventListener("click", function (evento) {
 });
 /* =========================================
    GALLINETA AMBIENTAL
+   SOLO EN AVES DE XOCHIMILCO
 ========================================= */
 
 const gallinetaAmbiente =
     document.getElementById("gallineta-ambiente");
+
 
 function mostrarGallineta() {
 
@@ -399,15 +473,54 @@ function mostrarGallineta() {
 }
 
 
-// Aparece inesperadamente entre 6 y 14 segundos
+function ocultarGallineta() {
 
-const esperaGallineta =
-    Math.random() * 8000 + 6000;
+    if (!gallinetaAmbiente) return;
 
-setTimeout(
-    mostrarGallineta,
-    esperaGallineta
+    gallinetaAmbiente.classList.remove("visible");
+}
+
+
+/* =========================================
+   DETECTAR SECCION AVES
+========================================= */
+
+if (seccionAves && gallinetaAmbiente) {
+
+   const observadorGallineta =
+    new IntersectionObserver(
+
+        function (entradas) {
+
+            entradas.forEach(
+                function (entrada) {
+
+                    if (entrada.isIntersecting) {
+
+                        mostrarGallineta();
+
+                    } else {
+
+                        ocultarGallineta();
+
+                    }
+
+                }
+            );
+
+        },
+
+        {
+            threshold: 0.01
+        }
+    );
+
+
+observadorGallineta.observe(
+    seccionAves
 );
+}
+
 /* =========================================
    INTERACCION GALLINETA
 ========================================= */
@@ -415,60 +528,6 @@ setTimeout(
 const gallinetaInteractiva =
     document.getElementById("gallineta-interactiva");
 
-if (gallinetaInteractiva) {
-
-    document.addEventListener("mousemove", function(event) {
-
-        const rect =
-            gallinetaInteractiva.getBoundingClientRect();
-
-        const centroX =
-            rect.left + rect.width / 2;
-
-        const centroY =
-            rect.top + rect.height / 2;
-
-        const distanciaX =
-            event.clientX - centroX;
-
-        const distanciaY =
-            event.clientY - centroY;
-
-        const distancia =
-            Math.sqrt(
-                distanciaX * distanciaX +
-                distanciaY * distanciaY
-            );
-
-
-        // Solo reacciona cuando estamos cerca
-        if (distancia < 280) {
-
-            const giro =
-                Math.max(
-                    -5,
-                    Math.min(5, distanciaX / 35)
-                );
-
-            const inclinacion =
-                Math.max(
-                    -3,
-                    Math.min(3, distanciaY / 60)
-                );
-
-            gallinetaInteractiva.style.transform =
-                `scale(1.04)
-                 rotate(${giro + inclinacion}deg)`;
-
-        } else {
-
-            gallinetaInteractiva.style.transform =
-                "scale(1) rotate(0deg)";
-        }
-
-    });
-
-}
 /* =========================================
    DESCUBRIR GALLINETA
 ========================================= */
@@ -563,7 +622,7 @@ function descubrirGallineta() {
         <div class="mini-ficha-info">
 
             <span class="estado-especie">
-                ESPECIE DESCUBIERTA
+                ave nativa de America.
             </span>
 
             <h3>Gallineta frente roja</h3>
@@ -573,7 +632,7 @@ function descubrirGallineta() {
             </p>
 
             <p class="mini-tamano">
-                Descubierta durante el recorrido
+                Familia: Rallidae. Tamaño: aprox. 30–38 cm de long. 
             </p>
 
         </div>
@@ -590,5 +649,248 @@ if (
 ) {
 
     descubrirGallineta();
+
+}
+/* =========================================
+   ZAMBULLIDOR AMBIENTAL
+========================================= */
+
+const zambullidorAmbiente =
+    document.getElementById("zambullidor-ambiente");
+
+const zambullidorInteractivo =
+    document.getElementById("zambullidor-interactivo");
+
+
+function mostrarZambullidor() {
+
+    if (!zambullidorAmbiente) return;
+
+    zambullidorAmbiente.classList.add("visible");
+
+}
+
+/* =========================================
+   ZAMBULLIDOR SOLO EN AVES DE XOCHIMILCO
+========================================= */
+
+function ocultarZambullidor() {
+
+    if (!zambullidorAmbiente) return;
+
+    zambullidorAmbiente.classList.remove("visible");
+}
+
+
+/* APARECE AL ENTRAR A LA SECCION VERDE */
+
+if (seccionAves && zambullidorAmbiente) {
+
+    const observadorZambullidor =
+        new IntersectionObserver(
+
+            function (entradas) {
+
+                entradas.forEach(
+                    function (entrada) {
+
+                        if (entrada.isIntersecting) {
+
+                            mostrarZambullidor();
+
+                        } else {
+
+                            ocultarZambullidor();
+
+                        }
+
+                    }
+                );
+
+            },
+
+            {
+                threshold: 0.01
+            }
+        );
+
+
+    observadorZambullidor.observe(
+        seccionAves
+    );
+}
+/* =========================================
+   DESCUBRIR ZAMBULLIDOR
+========================================= */
+
+const fichaZambullidor =
+    document.getElementById("ficha-zambullidor");
+
+const cerrarFichaZambullidor =
+    document.getElementById("cerrar-ficha-zambullidor");
+
+const tarjetaZambullidor =
+    document.getElementById("tarjeta-zambullidor");
+
+
+/* =========================================
+   ABRIR FICHA
+========================================= */
+
+if (
+    zambullidorInteractivo &&
+    fichaZambullidor
+) {
+
+    zambullidorInteractivo.addEventListener(
+        "click",
+        function () {
+
+            /* DESTELLO */
+
+            zambullidorAmbiente.classList.remove(
+                "descubierta"
+            );
+
+            void zambullidorAmbiente.offsetWidth;
+
+            zambullidorAmbiente.classList.add(
+                "descubierta"
+            );
+
+
+            /* ABRIR FICHA */
+
+            setTimeout(function () {
+
+                fichaZambullidor.style.display =
+                    "flex";
+
+                descubrirZambullidor();
+
+            }, 450);
+
+        }
+    );
+}
+
+
+/* =========================================
+   CERRAR CON LA X
+========================================= */
+
+if (cerrarFichaZambullidor) {
+
+    cerrarFichaZambullidor.addEventListener(
+        "click",
+        function () {
+
+            fichaZambullidor.style.display =
+                "none";
+
+        }
+    );
+}
+
+
+/* =========================================
+   CERRAR TOCANDO EL FONDO
+========================================= */
+
+if (fichaZambullidor) {
+
+    fichaZambullidor.addEventListener(
+        "click",
+        function (evento) {
+
+            if (
+                evento.target ===
+                fichaZambullidor
+            ) {
+
+                fichaZambullidor.style.display =
+                    "none";
+
+            }
+
+        }
+    );
+}
+
+
+/* =========================================
+   COLECCION - ZAMBULLIDOR DESCUBIERTO
+========================================= */
+
+function descubrirZambullidor() {
+
+    if (!tarjetaZambullidor) return;
+
+
+    /* GUARDAMOS EL DESCUBRIMIENTO */
+
+    localStorage.setItem(
+        "zambullidorDescubierto",
+        "si"
+    );
+
+
+    /* QUITAMOS EL SIGNO ? */
+
+    tarjetaZambullidor.classList.remove(
+        "especie-misteriosa"
+    );
+
+
+    /* CONVERTIMOS LA TARJETA */
+
+    tarjetaZambullidor.innerHTML = `
+
+        <div class="mini-ficha-imagen">
+
+            <img
+                src="imagenes/Zambullidor.jpg"
+                alt="Zambullidor en Xochimilco"
+            >
+
+        </div>
+
+
+        <div class="mini-ficha-info">
+
+            <span class="estado-especie">
+                Ave nativa de América
+            </span>
+
+            <h3>
+                Zambullidor
+            </h3>
+
+            <p class="mini-cientifico">
+                Tachybaptus dominicus
+            </p>
+
+            <p class="mini-tamano">
+               Familia: Podicipedidae, Tamaño: aprox. 21–27 cm
+            </p>
+
+        </div>
+
+    `;
+
+}
+
+
+/* =========================================
+   RECUPERAR DESCUBRIMIENTO
+========================================= */
+
+if (
+    localStorage.getItem(
+        "zambullidorDescubierto"
+    ) === "si"
+) {
+
+    descubrirZambullidor();
 
 }

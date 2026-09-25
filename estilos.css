@@ -1404,6 +1404,10 @@ main {
 ========================================= */
 
 .aves-xochimilco {
+
+    background: #013647;
+    padding: 80px 0;
+
     position: relative;
     overflow: hidden;
 
@@ -1774,13 +1778,15 @@ main {
 }
 /* =========================================
    GALLINETA AMBIENTAL
+   AVES DE XOCHIMILCO
 ========================================= */
 
 .gallineta-ambiente {
-    position: fixed;
+    position: absolute;
 
-    right: 4%;
-    bottom: 6%;
+    left: 5%;
+    right: auto;
+    bottom: 5%;
 
     width: 150px;
 
@@ -1789,12 +1795,12 @@ main {
     opacity: 0;
 
     transform:
-        translateY(20px)
-        scale(0.9);
+        translateY(15px)
+        scale(0.95);
 
     transition:
-        opacity 1.2s ease,
-        transform 1.2s ease;
+        opacity 0.35s ease,
+        transform 0.6s ease;
 
     pointer-events: none;
 }
@@ -1808,6 +1814,31 @@ main {
         scale(1);
 
     pointer-events: auto;
+
+    animation:
+        flotarGallineta
+        3.8s
+        ease-in-out
+        infinite;
+}
+
+
+/* MOVIMIENTO MUY SUAVE SOBRE EL AGUA */
+
+@keyframes flotarGallineta {
+
+    0%,
+    100% {
+        transform:
+            translateY(0)
+            scale(1);
+    }
+
+    50% {
+        transform:
+            translateY(4px)
+            scale(1);
+    }
 }
 
 
@@ -1831,7 +1862,7 @@ main {
 }
 
 
-/* cuando acercamos el cursor */
+/* AL PASAR EL CURSOR */
 
 .gallineta-ambiente img:hover {
 
@@ -1853,7 +1884,8 @@ main {
     .gallineta-ambiente {
         width: 105px;
 
-        right: 3%;
+        left: 4%;
+        right: auto;
         bottom: 4%;
     }
 
@@ -1892,7 +1924,7 @@ main {
 .gallineta-ambiente.descubierta::after {
 
     animation:
-        descubrirAve 0.9s ease-out;
+        descubrirAve 0.3s ease-out;
 }
 
 
@@ -1918,4 +1950,230 @@ main {
         opacity: 0;
     }
 
+}
+/* =========================================
+   ZAMBULLIDOR AMBIENTAL
+========================================= */
+
+.zambullidor-ambiente {
+    position: absolute;
+
+    right: 8%;
+    left: auto;
+    bottom: 5%;
+
+    width: 135px;
+
+    z-index: 19;
+
+    opacity: 0;
+
+    transform:
+        translateY(15px)
+        scale(0.9);
+
+    transition:
+        opacity 1.2s ease,
+        transform 1.2s ease;
+
+    pointer-events: none;
+}
+
+
+.zambullidor-ambiente.visible {
+    opacity: 1;
+
+    transform:
+        translateY(0)
+        scale(1);
+
+    pointer-events: auto;
+}
+
+
+.zambullidor-ambiente img {
+
+    transform: scaleX(-1);
+    transform-origin: center bottom;
+
+    width: 100%;
+    height: auto;
+
+    display: block;
+
+    cursor: pointer;
+
+    filter:
+        drop-shadow(
+            0 7px 7px rgba(0,0,0,0.25)
+        );
+}
+
+
+/* =========================================
+   ZAMBULLIDOR FLOTANDO NORMALMENTE
+========================================= */
+
+.zambullidor-ambiente.visible:not(.clavado) img {
+
+    animation:
+        flotarZambullidor
+        5.5s
+        ease-in-out
+        infinite;
+}
+
+/* =========================================
+   ONDAS DE AGUA - AVES FLOTANDO
+========================================= */
+
+/* Permitimos dibujar las ondas alrededor de las aves */
+
+.gallineta-ambiente,
+.zambullidor-ambiente {
+    overflow: visible;
+}
+
+
+/* ONDAS */
+
+.gallineta-ambiente::before,
+.gallineta-ambiente::after,
+.zambullidor-ambiente::before,
+.zambullidor-ambiente::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    bottom: 2px;
+
+    width: 90%;
+    height: 20px;
+
+    border: 1px solid rgba(255, 255, 255, 0.32);
+
+    border-radius: 50%;
+
+    transform: translateX(-50%) scale(0.55);
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    z-index: -1;
+
+    animation:
+        ondaAve 3.8s ease-out infinite;
+}
+
+
+/* SEGUNDA ONDA CON RETRASO */
+
+.gallineta-ambiente::after,
+.zambullidor-ambiente::after {
+
+    animation-delay: 1.9s;
+
+}
+
+
+/* EXPANSIÓN SUAVE */
+
+@keyframes ondaAve {
+
+    0% {
+
+        transform:
+            translateX(-50%)
+            scale(0.55);
+
+        opacity: 0;
+    }
+
+    15% {
+
+        opacity: 0.75;
+    }
+
+    70% {
+
+        opacity: 0.25;
+    }
+
+    100% {
+
+        transform:
+            translateX(-50%)
+            scale(2.15);
+
+        opacity: 0;
+    }
+
+}
+/* =========================================
+   MASCARA DE SALIDA
+========================================= */
+
+.mascara-zambullidor {
+
+    position: absolute;
+
+    left: 50%;
+    bottom: 7px;
+
+    width: 135px;
+    height: 120px;
+
+    transform: translateX(-50%);
+
+    /*
+       Todo lo que esté debajo de esta
+       ventana permanece oculto.
+    */
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    z-index: 3;
+}
+/* =========================================
+   EFECTO DESCUBRIMIENTO ZAMBULLIDOR
+========================================= */
+
+.zambullidor-ambiente::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 40px;
+    height: 40px;
+
+    border-radius: 50%;
+
+    border:
+        2px solid rgba(235, 220, 110, 0.9);
+
+    transform:
+        translate(-50%, -50%)
+        scale(0);
+
+    opacity: 0;
+
+    pointer-events: none;
+}
+
+
+.zambullidor-ambiente.descubierta::after {
+
+    animation:
+        descubrirAve
+        0.3s
+        ease-out;
 }
